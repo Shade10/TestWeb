@@ -1,11 +1,27 @@
-﻿
+﻿@model WebTest.Models.GuestResponse
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Create";
 }
 
-<h2>Index</h2>
 
-<form method="post">
-    Name: <input type="text"/>
-    <button type="submit">Submit</button>
-</form>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    <p>Imię i Nazwisko: @Html.TextBoxFor(x => x.Name) </p>
+    <p>Twój e-mail: @Html.TextBoxFor(x => x.Email) @Html.ValidationMessageFor(x => x.Email)</p>
+    <p>Twój telefon: @Html.TextBoxFor(x => x.Phone)</p>
+    <p>
+        Czy Przyjdziesz na przyjęcie?
+        @Html.DropDownListFor(x => x.WillAttend, new[]
+        {
+            new SelectListItem() {Text = "Tak przyjdę.", Value=bool.TrueString},
+            new SelectListItem() {Text = "Nie, nie przyjdę.", Value=bool.FalseString}
+        }   , "Wybierz opcję")
+    </p>
+    <input type="submit" value="Wyślij zawiadomienie" />
+
+
+
+}

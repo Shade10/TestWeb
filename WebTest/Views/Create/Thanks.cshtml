@@ -1,0 +1,16 @@
+﻿@model WebTest.Models.GuestResponse
+
+@{
+    ViewBag.Title = "Thanks";
+}
+
+<div>
+    <h1>Dzięki, @Model.Name!</h1>
+    @if (Model.WillAttend == true)
+    {
+        @:Cieszymy się niezmiernie
+    }
+    else {
+        @:Przykro nam :(
+    }
+</div>
